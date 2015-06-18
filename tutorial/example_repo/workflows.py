@@ -20,8 +20,7 @@ from pinball_ext.workflow.config import WorkflowConfig
 from pinball_ext.workflow.config import ScheduleConfig
 from pinball_ext.job_templates import JobTemplate
 from pinball_ext.job_templates import CommandJobTemplate
-from tutorial.example_repo.job_templates import ExampleEMRJobTemplate
-from tutorial.example_repo.job_templates import ExampleQuboleJobTemplate
+
 
 
 # A template for a placeholder final job to add to the end of
@@ -32,21 +31,21 @@ WORKFLOWS = {
     'tutorial_workflow': WorkflowConfig(
         jobs={
             'example_python_job':
-            JobConfig(JobTemplate('ExamplePythonJob'), []),
+                JobConfig(JobTemplate('ExamplePythonJob'), []),
             'example_command_job':
-            JobConfig(JobTemplate('ExampleCommandJob'), ['example_python_job']),
-            'example_quoble_hive_job':
-            JobConfig(ExampleQuboleJobTemplate('ShowTableHiveJob'), ['example_command_job']),
-            'example_emr_hive_job':
-            JobConfig(ExampleEMRJobTemplate('RandomUsersHiveJob'), ['example_command_job']),
-            'example_emr_hadoop_job':
-            JobConfig(ExampleEMRJobTemplate('EmrWordCount'), ['example_emr_hive_job']),
+                JobConfig(JobTemplate('ExampleCommandJob'), ['example_python_job']),
+            #'example_quoble_hive_job':
+            #JobConfig(ExampleQuboleJobTemplate('ShowTableHiveJob'), ['example_command_job']),
+            #'example_emr_hive_job':
+            #JobConfig(ExampleEMRJobTemplate('RandomUsersHiveJob'), ['example_command_job']),
+            #'example_emr_hadoop_job':
+            #JobConfig(ExampleEMRJobTemplate('EmrWordCount'), ['example_emr_hive_job']),
         },
         final_job_config=JobConfig(FINAL_JOB),
         schedule=ScheduleConfig(recurrence=timedelta(days=1),
                                 reference_timestamp=datetime(
-                                year=2015, month=2, day=1, second=1)),
-        notify_emails='your@email.com'),
+                                    year=2015, month=2, day=1, second=1)),
+        notify_emails='yuriy+pinball@betterment.com'),
 
     # Pinball allows an upstream job to pass attributes to downstream dependants.
     # Pinball executor has the ability to interpret specially formatted job output.
@@ -66,6 +65,6 @@ WORKFLOWS = {
         final_job_config=JobConfig(FINAL_JOB),
         schedule=ScheduleConfig(recurrence=timedelta(days=1),
                                 reference_timestamp=datetime(
-                                year=2015, month=1, day=1, second=1)),
-        notify_emails='your@email.com'),
+                                    year=2015, month=1, day=1, second=1)),
+        notify_emails='yuriy+pinball@betterment.com'),
 }

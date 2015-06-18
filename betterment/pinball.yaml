@@ -68,12 +68,12 @@ parser:                       pinball_ext.workflow.parser.PyWorkflowParser
 parser_params:
       # Name of the variable that stores workflows config.
       # We need to make sure 'tutorial' is in PYTHONPATH.
-      workflows_config:       tutorial.example_repo.workflows.WORKFLOWS
+      workflows_config:       betterment.datawarehouse.workflows_config.WORKFLOWS
       # We assume you download tutorial folder under '/mnt/' path
       job_repo_dir:           "/Users/yuriy/src/pinball"
       # Name of the variable that stores list of dirs where job class should
       # be imported from. Dirs are relative to 'job_repo_dir'.
-      job_import_dirs_config: tutorial.example_repo.job_config.JOB_IMPORT_DIRS
+      job_import_dirs_config: betterment.datawarehouse.job_config.JOB_IMPORT_DIRS
 
 
 # Configuration for the default email in pinball.
