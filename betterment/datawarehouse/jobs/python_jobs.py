@@ -26,11 +26,12 @@ class ExamplePythonJob(PythonJob):
         print 'Current time is %s' % str(datetime.datetime.now())
 
 
-class ExamplePinballMagicPythonJob(PythonJob):
+class DatabaseTableSyncJob(PythonJob):
     def _setup(self):
-        print 'Do some setup in example python job!'
+        print self.params
 
     def _execute(self):
         # a_python_key=a_python_value pair will be passed to
         # the downstream job as event attribute.
+        print self.params
         print 'PINBALL:EVENT_ATTR:a_python_key=a_python_value'

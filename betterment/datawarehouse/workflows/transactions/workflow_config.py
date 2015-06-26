@@ -20,10 +20,7 @@ from pinball_ext.workflow.config import WorkflowConfig
 from pinball_ext.workflow.config import ScheduleConfig
 from pinball_ext.job_templates import JobTemplate
 from pinball_ext.job_templates import CommandJobTemplate
-
-
-
-
+from betterment.datawarehouse.job_templates import DatabaseTableSyncJobTemplate
 
 # A template for a placeholder final job to add to the end of
 # workflows.
@@ -33,10 +30,10 @@ class WorkflowConfig:
     WORKFLOW = {
         'transactions': WorkflowConfig(
             jobs={
-                'example_python_job':
-                    JobConfig(JobTemplate('ExamplePythonJob'), []),
-                'example_command_job':
-                    JobConfig(JobTemplate('ExampleCommandJob'), ['example_python_job']),
+                'transactions_sync_job':
+                    JobConfig(DatabaseTableSyncJobTemplate('DatabaseTableSyncJob', table_sync_config={'sync_table_name':'UserTransactions'}), []),
+                'positions_sync_job':
+                    JobConfig(DatabaseTableSyncJobTemplate('DatabaseTableSyncJob', table_sync_config={'sync_table_name':'UserPositions'}), ['transactions_sync_job']),
             },
             final_job_config=JobConfig(FINAL_JOB),
             schedule=ScheduleConfig(recurrence=timedelta(days=1),
