@@ -62,7 +62,7 @@ setup(
         'python-dateutil==1.5',
         'PyTrie==0.1',
         'pytz==2013b',
-        'pyyaml==5.1',
+        'pyyaml==5.4',
         'qds_sdk==1.3.0',
         'thrift==0.8.0',
         'tox>=1.6.1',
